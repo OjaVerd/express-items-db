@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:3000/api/items
+
+### 1. POST - create an item
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": "Widget",
+  "description": "A test item",
+  "price": 9.99,
+  "quantity": 5
+}
+
+### 2. GET - all items
+GET {{baseUrl}}
+
+### 3. GET - one item (use the id returned by the POST)
+GET {{baseUrl}}/1
+
+### 4. PUT - update an item
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "price": 12.50
+}
+
+### 5. DELETE - remove an item
+DELETE {{baseUrl}}/1
+
+### 6. GET - missing item (expect 404)
+GET {{baseUrl}}/9999
+
+### 7. POST - invalid body (expect 400)
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": ""
+}
